@@ -15,3 +15,13 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::resource('administadores', 'AdministradoresController');
+Route::resource('estudiantes', 'EstudiantesController');
+Route::resource('proyectos', 'ProyectosController');
+Route::resource('actividades', 'ActividadesController');
+Route::resource('perfiles', 'PerfilesController');
+Route::resource('becas', 'BecasController');
+Route::resource('planeaciones', 'PlaneacionesController');
+Route::resource('tareas', 'TareasController');
