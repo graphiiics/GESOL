@@ -11,6 +11,9 @@ class ProyectosController extends \BaseController {
 	public function index()
 	{
 		//
+		$proyectos = Proyecto::all();
+
+		return View::make('proyectos.index', compact('proyectos'));
 	}
 
 	/**
