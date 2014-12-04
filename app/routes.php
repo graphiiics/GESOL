@@ -25,3 +25,9 @@ Route::resource('perfiles', 'PerfilesController');
 Route::resource('becas', 'BecasController');
 Route::resource('planeaciones', 'PlaneacionesController');
 Route::resource('tareas', 'TareasController');
+
+Route::get('catalogo1', function(){
+	return View::make('catalogo');
+});
+
+Route::get('catalogo2', 'catalogoController@getCatalogo2');

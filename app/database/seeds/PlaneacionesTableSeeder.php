@@ -7,14 +7,10 @@ class PlaneacionesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Planeacion::create([
-
-			]);
-		}
+		$paneacion1 = Planeacion::create(array(
+			'porcentaje' => 10,
+			'proyecto_id' => $proyecto1->id;
+			));
 	}
 
 }

@@ -11,7 +11,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		//$this->call('ProyectosTableSeeder');
+		$this->call('PlaneacionesTableSeeder');
+		$this->command->info('GESOL app seeds finished.');
 	}
 
 }

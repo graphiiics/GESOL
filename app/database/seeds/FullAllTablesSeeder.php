@@ -1,16 +1,22 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
-
-class ProyectosTableSeeder extends Seeder {
+class FullAllTablesSeeder extends Seeder {
 
 	public function run()
 	{
-		
 		//Limpiar la tabla 
 		DB::table('proyectos')->delete();
+		DB::table('actividades')->delete();
+		DB::table('perfiles')->delete();
+		DB::table('perfil_proyecto')->delete();
+		DB::table('planeaciones')->delete();
+		DB::table('tareas')->delete();
+		DB::table('estudiantes')->delete();
+		DB::table('becas')->delete();
 
+
+
+		//LLenar proyectos
 		$proyecto1 = Proyecto::create(array(
 
 
@@ -142,9 +148,85 @@ class ProyectosTableSeeder extends Seeder {
 
 			));
 
-	$this->command->info('El catalogo de proyectos esta listo!');
+		$this->command->info('El catalogo de proyectos esta listo!');
 
 
+		//Llenar actividades de los proyectos
+
+		//molde actividad
+		$actividad = Actividad::create(array(
+			'nombre'		=>	'',
+			'proyecto_id'	=>  $proyecto->id
+			));
+
+		//Llenar perfiles estudiantes
+
+		//Molde perfil
+		$perfil = Perfil::create(array(
+			'nombre'	=>	''
+			));
+
+
+
+		//Llenar relacion perfil_proyecto
+		$table->integer('perfil_id');
+		$table->integer('proyecto_id');
+
+		//molde relaciones perfil_proyecto
+		//BERFICAR BIEN ESTA MMDA
+		$proyecto->perfiles()->attach($perfil->id);
+
+		//Llenar planeaciones
+		$table->integer('porcentaje');
+		$table->integer('proyecto_id');
+
+
+		//Llenar tareas
+		$table->string('nombre');
+		$table->integer('porcentaje');
+		$table->integer('tiempo');
+		$table->boolean('estatus');
+		$table->integer('planeacion_id');
+		$table->integer('estudiante_id');
+
+		//Llenar estudiantes
+		$table->string('nombres');
+		$table->string('apellidos');
+		$table->integer('edad');
+		$table->date('fechaNacimiento');
+		$table->integer('telefono');
+		$table->integer('celular');
+		$table->string('correo');
+		$table->string('contrasena');
+		$table->char('sexo');
+		$table->integer('codigoPostal');
+		$table->string('estado');
+		$table->string('municipio');
+		$table->string('universidad');
+		$table->string('carrera');
+		$table->string('matricula');
+		$table->string('modalidad');
+		$table->integer('grado');
+		$table->double('promedio');
+		$table->string('periodo');
+		$table->boolean('estatus');
+		$table->boolean('estatusProyecto');
+		$table->integer('proyecto_id');
+		$table->integer('perfil_id');
+
+		//Llenar becas
+		$table->string('perfil');
+		$table->string('cartaSolicitud');
+		$table->string('curp');
+		$table->string('ife');
+		$table->string('cartaPrestacion');
+		$table->string('cartaAceptacion');
+		$table->integer ('estudiante_id');
+		$table->string ('periodo');
+
+
+
+		
 	}
 
 }
