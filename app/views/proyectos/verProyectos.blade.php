@@ -1,35 +1,39 @@
+@extends('layouts.masterPro')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<!--  
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
--->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js" type="text/javascript" text="text/javascript"></script>
-    {{HTML::script('js/catalogox.js')}}
-	
-	<title>Document</title>
-</head>
-<body>
-	
-	<div class="container">
-	<div class="col-sm-12 col-md-12">
-            <div class="well">
-                <h1>
-                    Menu principal de todos los menus
-                </h1>      
-            </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3 col-md-3">
+@section('head')
+	{{HTML::style('css/test.css');}}
+	{{HTML::script('js/catalogox.js')}}
+	<script src="http://code.jquery.com/jquery-1.11.1.js" type="text/javascript" text="text/javascript"></script>
+@stop
+
+@section('cabecera')
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+	  <div class="btn-group" role="group">
+	    <a href="{{ URL::to('inicio') }}">
+		    <button type="button" class="btn btn-default">Inicio</button>
+	    </a>
+	  </div>
+	  <div class="btn-group" role="group">
+	    <a href="{{ URL::to('verProyectos') }}">
+		    <button type="button" class="btn btn-default">Proyectos</button>
+	    </a>
+	  </div>
+	  <div class="btn-group" role="group">
+	    <a href="{{ URL::to('nuevoEstudiante') }}">
+		    <button type="button" class="btn btn-default">Registro</button>
+	    </a>
+	  </div>
+	  <div class="btn-group" role="group">
+	    <a href="{{ URL::to('login') }}">
+		    <button type="button" class="btn btn-default">Login</button>
+	    </a>
+	  </div>
+	</div>
+@stop
+
+@section('menu')
+	<div class="row">
+  
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -124,17 +128,12 @@
                 </div>
                
             </div>
-        </div>
-        <div class="col-sm-9 col-md-9">
-            <div class="well" id="resultado">
-                <h1>
-                    Accordion Menu With Icon</h1>
-                Admin Dashboard Accordion Menu
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-	
-</html>
+        
+    </div>    
+
+@stop
+
+@section('contenido')
+	<p>Esto es el contenido</p>
+@stop
 

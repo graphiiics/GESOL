@@ -24,6 +24,12 @@ class Estudiante extends \Eloquent {
 		return $this->belongsTo('Perfil');
 	}
 
-
+	public function delete()
+    {
+       // $this->()->delete();
+       // $this->()->detach();
+       //Algo anda mal aqui (Revisar) 12/19/2014 Linea 29 Sintaxis error
+       return parent::delete();
+    }
 
 }

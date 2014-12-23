@@ -33,6 +33,36 @@ class EstudiantesController extends \BaseController {
 	public function store()
 	{
 		//
+		$estudiante = new Estudiante;
+
+		$estudiante->nombres = Input::get('nombres');
+		$estudiante->apellidos = Input::get('apellidos');
+		$estudiante->edad = Input::get('edad');
+		$estudiante->fechaNacimiento = Input::get('fechaNacimiento');
+		$estudiante->telefono = Input::get('telefono');
+		$estudiante->celular = Input::get('celular');
+		$estudiante->email = Input::get('email');
+		$estudiante->contrasena = Input::get('contrasena');
+		$estudiante->sexo = Input::get('sexo');
+		$estudiante->codigoPostal = Input::get('codigoPostal');
+		$estudiante->estado = Input::get('estado');
+		$estudiante->municipio = Input::get('municipio');
+		$estudiante->universidad = Input::get('universidad');
+		$estudiante->carrera = Input::get('carrera');
+		$estudiante->matricula = Input::get('matricula');
+		$estudiante->modalidad = Input::get('modalidad');
+		$estudiante->grado = Input::get('grado');
+		$estudiante->promedio = Input::get('promedio');
+		$estudiante->periodo = Input::get('periodo');
+		$estudiante->perfil_id = Input::get('perfil_id');
+		$estudiante->direccion = Input::get('direccion');
+		
+		$estudiante->save();
+
+		echo($estudiante);
+
+		return Redirect::to('inicio');
+
 	}
 
 	/**

@@ -4,17 +4,29 @@
 class catalogoController extends BaseController{
 
 
-	public function getCatalogo2()
+	public function getCatalogo()
 	{
-		$proyectosSoftware = Proyecto::where('tipoProyecto', '=', 'software')->get();
+		 $proyectosSoftware = Proyecto::where('tipoProyecto', '=', 'Desarrollo de software')->get();
 		 
-		 $proyectosLinux = Proyecto::where('tipoProyecto', '=', 'linux')->get();
+		 $proyectosLinux = Proyecto::where('tipoProyecto', '=', 'Linux y kernel')->get();
 
-		 $proyectosRedes = Proyecto::where('tipoProyecto', '=', 'redes')->get();
+		 $proyectosMoviles = Proyecto::where('tipoProyecto', '=', 'Aplicaciones moviles')->get();
 
-		 $proyectosHardware = Proyecto::where('tipoProyecto', '=', 'hardware')->get();
+		 $proyectosHardware = Proyecto::where('tipoProyecto', '=', 'Hardware libre')->get();
 
-		return View::make('catalogo')->with(array('proyectosSoftware'=> $proyectosSoftware, 'proyectosLinux' => $proyectosLinux, 'proyectosRedes' => $proyectosRedes, 'proyectosHardware' => $proyectosHardware ));
+		 $proyectosDiseño = Proyecto::where('tipoProyecto', '=', 'Diseño gráfico y multimedia')->get();
+
+		return View::make('proyectos/verProyectos')->with(array('proyectosSoftware'=> $proyectosSoftware, 'proyectosLinux' => $proyectosLinux, 'proyectosMoviles' => $proyectosMoviles, 'proyectosHardware' => $proyectosHardware, 'proyectosDiseño' => $proyectosDiseño ));
+	}
+
+	public function getDatos($id)
+	{
+		$proyecto = Proyecto::find($id);
+
+		$resultado ="<h1>".$proyecto->nombre."</h1>
+					<p>".$proyecto->descripcion."</p>";
+		return $resultado;
+
 	}
 }
  	

@@ -9,5 +9,11 @@ class Actividad extends \Eloquent {
 		return $this->belongsTo('Proyecto');
 	}
 
+	//En estos casos creo que la funcion no es necesaria. 
+	public function delete()
+    {
+        return parent::delete();
+    }
+
 	
 }

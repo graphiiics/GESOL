@@ -14,7 +14,7 @@ class FullAllTablesSeeder extends Seeder {
 		DB::table('estudiantes')->delete();
 		DB::table('becas')->delete();
 
-
+		$this->command->info('borrado listo!');
 
 		//LLenar proyectos
 		$proyecto1 = Proyecto::create(array(
@@ -22,7 +22,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 1',
 			'dependencia'		=>	'labsol',
-			'tipoProyecto'		=>	'software',
+			'tipoProyecto'		=>	'Desarrollo de software',
 			'duracion'			=>	6,
 			'numeroIntegrantes'	=>	4,
 			'objetivo'			=>	'Objetivo proyecto 1',
@@ -35,7 +35,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 2',
 			'dependencia'		=>	'labsol',
-			'tipoProyecto'		=>	'hardware',
+			'tipoProyecto'		=>	'Hardware libre',
 			'duracion'			=>	9,
 			'numeroIntegrantes'	=>	2,
 			'objetivo'			=>	'Objetivo proyecto 2',
@@ -48,7 +48,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 3',
 			'dependencia'		=>	'cozcyt',
-			'tipoProyecto'		=>	'redes',
+			'tipoProyecto'		=>	'Linux y kernel',
 			'duracion'			=>	4,
 			'numeroIntegrantes'	=>	1,
 			'objetivo'			=>	'objetivo proyecto 3',
@@ -61,7 +61,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 4',
 			'dependencia'		=>	'gobierno',
-			'tipoProyecto'		=>	'linux',
+			'tipoProyecto'		=>	'Linux y kernel',
 			'duracion'			=>	8,
 			'numeroIntegrantes'	=>	3,
 			'objetivo'			=>	'objetivo proyecto 4',
@@ -74,7 +74,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 5',
 			'dependencia'		=>	'labsol',
-			'tipoProyecto'		=>	'hardware',
+			'tipoProyecto'		=>	'Hardware libre',
 			'duracion'			=>	5,
 			'numeroIntegrantes'	=>	3,
 			'objetivo'			=>	'objetivo proyecto 5',
@@ -87,7 +87,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 6',
 			'dependencia'		=>	'gobierno',
-			'tipoProyecto'		=>	'redes',
+			'tipoProyecto'		=>	'Aplicaciones moviles',
 			'duracion'			=>	10,
 			'numeroIntegrantes'	=>	5,
 			'objetivo'			=>	'objetivo proyecto 6',
@@ -101,7 +101,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 7',
 			'dependencia'		=>	'cozcyt',
-			'tipoProyecto'		=>	'software',
+			'tipoProyecto'		=>	'Diseño gráfico y multimedia',
 			'duracion'			=>	9,
 			'numeroIntegrantes'	=>	6,
 			'objetivo'			=>	'objetivo proyecto 7',
@@ -114,7 +114,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 8',
 			'dependencia'		=>	'intel',
-			'tipoProyecto'		=>	'linux',
+			'tipoProyecto'		=>	'Linux y kernel',
 			'duracion'			=>	10,
 			'numeroIntegrantes'	=>	9,
 			'objetivo'			=>	'objetivo proyecto 8',
@@ -127,7 +127,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 9',
 			'dependencia'		=>	'intel',
-			'tipoProyecto'		=>	'hardware',
+			'tipoProyecto'		=>	'Desarrollo de software',
 			'duracion'			=>	8,
 			'numeroIntegrantes'	=>	4,
 			'objetivo'			=>	'objetivo proyecto 9',
@@ -140,7 +140,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 10',
 			'dependencia'		=>	'labsol',
-			'tipoProyecto'		=>	'redes',
+			'tipoProyecto'		=>	'Aplicaciones moviles',
 			'duracion'			=>	10,
 			'numeroIntegrantes'	=>	9,
 			'objetivo'			=>	'objetivo proyecto 10',
@@ -148,7 +148,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			));
 
-		$this->command->info('El catalogo de proyectos esta listo!');
+		$this->command->info('proyectos listo!');
 
 
 		//Llenar actividades de los proyectos
@@ -259,6 +259,8 @@ class FullAllTablesSeeder extends Seeder {
 			'proyecto_id'	=>  $proyecto10->id
 			));
 
+		$this->command->info('actividades listo!');
+
 		//Llenar perfiles estudiantes
 
 		//Molde perfil
@@ -286,11 +288,11 @@ class FullAllTablesSeeder extends Seeder {
 			'nombre'	=>	'especialista en linux'
 			));
 
+		$this->command->info('perfiles listo!');
+
 
 
 		//Llenar relacion perfil_proyecto
-		$table->integer('perfil_id');
-		$table->integer('proyecto_id');
 
 
 		//molde relaciones perfil_proyecto
@@ -334,6 +336,8 @@ class FullAllTablesSeeder extends Seeder {
 		$proyecto10->perfiles()->attach($perfil2->id);
 		$proyecto10->perfiles()->attach($perfil4->id);
 		$proyecto10->perfiles()->attach($perfil6->id);
+
+		$this->command->info('relaciones perfil_proyecto listo!');
 
 		//Llenar planeaciones
 
@@ -389,6 +393,8 @@ class FullAllTablesSeeder extends Seeder {
 			'proyecto_id' 	=> $proyecto10->id
 			));
 
+		$this->command->info('planeaciones listo!');
+
 
 
 		//Llenar estudiantes
@@ -401,8 +407,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'gaelgeovaimq@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'gaelgeovaimq@gmai.com',
+			'contrasena'		=> '123456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -417,19 +423,20 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto1->id,
-			'perfil'			=> $perfil1->id
+			'perfil_id'			=> $perfil1->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 
 		$estudiante2 = Estudiante::create(array(
-			'nombres'			=> 'Alex',
+			'nombres'			=> 'Gael',
 			'apellidos'			=> 'Ferniza Montes',
 			'edad'				=> 21,
 			'fechaNacimiento'	=> '1991-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'alex_34@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'alex_34@gmai.com',
+			'contrasena'		=> '123458',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -444,7 +451,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto1->id,
-			'perfil'			=> $perfil2->id
+			'perfil_id'			=> $perfil2->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante3 = Estudiante::create(array(
@@ -454,8 +462,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1994-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'kike_234@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'kike_234@gmai.com',
+			'contrasena'		=> '123436',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -470,7 +478,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto2->id,
-			'perfil'			=> $perfil3->id
+			'perfil_id'			=> $perfil3->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante4 = Estudiante::create(array(
@@ -480,8 +489,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'lucerocro@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'lucerocro@gmai.com',
+			'contrasena'		=> '122456',
 			'sexo'				=> 'F',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -496,7 +505,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto2->id,
-			'perfil'			=> $perfil4->id
+			'perfil_id'			=> $perfil4->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante5 = Estudiante::create(array(
@@ -506,8 +516,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'gama_like@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'gama_like@gmai.com',
+			'contrasena'		=> '12233456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -522,7 +532,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto3->id,
-			'perfil'			=> $perfil5->id
+			'perfil_id'			=> $perfil5->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante6 = Estudiante::create(array(
@@ -532,8 +543,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'godinez123@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'godinez123@gmai.com',
+			'contrasena'		=> '1233423456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -548,7 +559,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto3->id,
-			'perfil'			=> $perfil6->id
+			'perfil_id'			=> $perfil6->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante7 = Estudiante::create(array(
@@ -558,8 +570,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'lalo1234@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'lalo1234@gmai.com',
+			'contrasena'		=> '123452146',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -574,7 +586,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto4->id,
-			'perfil'			=> $perfil6->id
+			'perfil_id'			=> $perfil6->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante8 = Estudiante::create(array(
@@ -584,8 +597,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'najkachi@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'najkachi@gmai.com',
+			'contrasena'		=> '12345d6',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -600,7 +613,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto4->id,
-			'perfil'			=> $perfil5->id
+			'perfil_id'			=> $perfil5->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante9 = Estudiante::create(array(
@@ -610,8 +624,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'karlos222@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'karlos222@gmai.com',
+			'contrasena'		=> '123f456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -626,7 +640,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto5->id,
-			'perfil'			=> $perfil4->id
+			'perfil_id'			=> $perfil4->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante10 = Estudiante::create(array(
@@ -636,8 +651,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'sex_zorro@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'sex_zorro@gmai.com',
+			'contrasena'		=> '12345s6',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -652,7 +667,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto5->id,
-			'perfil'			=> $perfil3->id
+			'perfil_id'			=> $perfil3->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante11 = Estudiante::create(array(
@@ -662,8 +678,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'krizrocker@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'krizrocker@gmai.com',
+			'contrasena'		=> '1234sa56',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -678,7 +694,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto6->id,
-			'perfil'			=> $perfil2->id
+			'perfil_id'			=> $perfil2->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante12 = Estudiante::create(array(
@@ -688,8 +705,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'ferfloro@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'ferfloro@gmai.com',
+			'contrasena'		=> '1234qe56',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -704,7 +721,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto6->id,
-			'perfil'			=> $perfil1->id
+			'perfil_id'			=> $perfil1->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante13 = Estudiante::create(array(
@@ -714,8 +732,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'karen12@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'karen12@gmai.com',
+			'contrasena'		=> '123e2456',
 			'sexo'				=> 'F',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -730,7 +748,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto7->id,
-			'perfil'			=> $perfil1->id
+			'perfil_id'			=> $perfil1->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante14 = Estudiante::create(array(
@@ -740,8 +759,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'danii23@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'danii23@gmai.com',
+			'contrasena'		=> '1234dd56',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -756,7 +775,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto7->id,
-			'perfil'			=> $perfil2->id
+			'perfil_id'			=> $perfil2->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante15 = Estudiante::create(array(
@@ -766,8 +786,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'lobo_dark@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'lobo_dark@gmai.com',
+			'contrasena'		=> '12341356',
 			'sexo'				=> 'F',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -782,7 +802,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto7->id,
-			'perfil'			=> $perfil3->id
+			'perfil_id'			=> $perfil3->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante16 = Estudiante::create(array(
@@ -792,8 +813,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'paulLopez@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'paulLopez@gmai.com',
+			'contrasena'		=> '123d456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -808,7 +829,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto8->id,
-			'perfil'			=> $perfil4->id
+			'perfil_id'			=> $perfil4->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante17 = Estudiante::create(array(
@@ -818,8 +840,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'yaja12@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'yaja12@gmai.com',
+			'contrasena'		=> '123e32456',
 			'sexo'				=> 'F',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -834,7 +856,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto8->id,
-			'perfil'			=> $perfil5->id
+			'perfil_id'			=> $perfil5->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante18 = Estudiante::create(array(
@@ -844,8 +867,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'jra@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'jra@gmai.com',
+			'contrasena'		=> '123234456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -860,7 +883,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto8->id,
-			'perfil'			=> $perfil6->id
+			'perfil_id'			=> $perfil6->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante19 = Estudiante::create(array(
@@ -870,8 +894,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'balones09@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'balones09@gmai.com',
+			'contrasena'		=> '12345edw6',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -886,7 +910,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto9->id,
-			'perfil'			=> $perfil6->id
+			'perfil_id'			=> $perfil6->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante20 = Estudiante::create(array(
@@ -896,8 +921,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'teti.ol@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'teti.ol@gmai.com',
+			'contrasena'		=> '1w23456',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -912,7 +937,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto9->id,
-			'perfil'			=> $perfil5->id
+			'perfil_id'			=> $perfil5->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante21 = Estudiante::create(array(
@@ -922,8 +948,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'zapata33@gmai.com',
-			'contraseña'		=> '123456',
+			'email'			=> 'zapata33@gmai.com',
+			'contrasena'		=> '1234w256',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -938,7 +964,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto9->id,
-			'perfil'			=> $perfil4->id
+			'perfil_id'			=> $perfil4->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante22= Estudiante::create(array(
@@ -948,8 +975,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'chuy.loki@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'chuy.loki@gmai.com',
+			'contrasena'		=> '12234563',
 			'sexo'				=> 'M',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -964,7 +991,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto10->id,
-			'perfil'			=> $perfil3->id
+			'perfil_id'			=> $perfil3->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante23 = Estudiante::create(array(
@@ -974,8 +1002,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'minuscula123@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'minuscula123@gmai.com',
+			'contrasena'		=> '1235456',
 			'sexo'				=> 'F',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -990,7 +1018,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto10->id,
-			'perfil'			=> $perfil2->id
+			'perfil_id'			=> $perfil2->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
 		$estudiante24 = Estudiante::create(array(
@@ -1000,8 +1029,8 @@ class FullAllTablesSeeder extends Seeder {
 			'fechaNacimiento'	=> '1992-01-02',
 			'telefono'			=> 4989355490,
 			'celular'			=> 4921611742,
-			'correo'			=> 'ninaroja@gmai.com',
-			'contraseña'		=> '123456',
+			'email'				=> 'ninaroja@gmai.com',
+			'contrasena'		=> '1232456',
 			'sexo'				=> 'F',
 			'codigoPostal'		=> 98350,
 			'estado'			=> 'Zacatecas',
@@ -1016,10 +1045,11 @@ class FullAllTablesSeeder extends Seeder {
 			'estatus'			=> 1,
 			'estatusProyecto'	=> 1,
 			'proyecto_id'		=> $proyecto10->id,
-			'perfil'			=> $perfil1->id
+			'perfil_id'			=> $perfil1->id,
+			'direccion'			=> 'Leandro valle #22'
 			));
 
-
+			$this->command->info('estudiantes listo!');
 			
 			//Llenar tareas
 
@@ -1273,6 +1303,9 @@ class FullAllTablesSeeder extends Seeder {
 				'planeacion_id'	=> $planeacion10->id,
 				'estudiante_id'	=> $estudiante24->id
 				));
+
+
+			$this->command->info('tareas listo!');
 
 			
 
@@ -1543,6 +1576,8 @@ class FullAllTablesSeeder extends Seeder {
 			'estudiante_id'		=> $estudiante24->id,
 			'periodo'			=> 'ENE-JUL-15'
 			));
+
+		$this->command->info('becas listo!');
 		
 	}
 
