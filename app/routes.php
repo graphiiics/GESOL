@@ -27,8 +27,11 @@ Route::resource('planeaciones', 'PlaneacionesController');
 Route::resource('tareas', 'TareasController');
 
 
+Route::get('catalogo', 'catalogoController@getCatalogo');
+
 Route::get('verProyectos', 'catalogoController@getCatalogo');
 Route::get('datos/{id}', 'catalogoController@getDatos');
+
 
 Route::get('test', function()
 {

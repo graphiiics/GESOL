@@ -34,7 +34,7 @@ function catalogox()
 			function problemas()
 			{
 				//alert('fallo');
-				$("#well").html('Actualizar navegador o revisar codigo! ');
+				$("#resultado").html('Actualizar navegador o revisar codigo! ');
 			}
 
 

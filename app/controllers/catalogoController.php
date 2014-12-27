@@ -17,15 +17,27 @@ class catalogoController extends BaseController{
 		 $proyectosDiseño = Proyecto::where('tipoProyecto', '=', 'Diseño gráfico y multimedia')->get();
 
 		return View::make('proyectos/verProyectos')->with(array('proyectosSoftware'=> $proyectosSoftware, 'proyectosLinux' => $proyectosLinux, 'proyectosMoviles' => $proyectosMoviles, 'proyectosHardware' => $proyectosHardware, 'proyectosDiseño' => $proyectosDiseño ));
+		//return View::make('catalogo')->with(array('proyectosSoftware'=> $proyectosSoftware, 'proyectosLinux' => $proyectosLinux, 'proyectosMoviles' => $proyectosMoviles, 'proyectosHardware' => $proyectosHardware, 'proyectosDiseño' => $proyectosDiseño ));
 	}
 
 	public function getDatos($id)
 	{
 		$proyecto = Proyecto::find($id);
 
-		$resultado ="<h1>".$proyecto->nombre."</h1>
-					<p>".$proyecto->descripcion."</p>";
-		return $resultado;
+		echo ("<h2><b>Nombre:</b> ".$proyecto->nombre."</h2>");
+		echo ("<h4><b>Dependencia:</b> ".$proyecto->dependencia."</h4>");
+		echo ("<h4><b>Duración:</b> ".$proyecto->duracion." semanas</h4>");
+		echo ("<h4><b>Número de integrantes:</b> ".$proyecto->numeroIntegrantes."</h4>");
+		echo ("<h4><b>Perfiles requeridos:</b></h4><la>");
+		foreach ($proyecto->perfiles as $perfil) {
+			echo ("<li>".$perfil->nombre."</li>");
+			
+		}
+		echo ("</la><p><b>Objetivo:</b><br> ".$proyecto->objetivo."</p>");
+		echo ("<p><b>Descripción:</b><br> ".$proyecto->descripcion."</p>");
+		
+
+		//return $resultado;
 
 	}
 }

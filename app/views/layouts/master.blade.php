@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GESOL</title>
-	{{HTML::style('css/bootstrap-theme.min.css');}}
-	{{HTML::style('css/bootstrap.min.css');}}
-	{{HTML::script('js/bootstrap.min.js');}}
-	{{HTML::script('js/jquery-1.11.0.min.js');}}
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	@yield('head')	
 </head>
 <body>
