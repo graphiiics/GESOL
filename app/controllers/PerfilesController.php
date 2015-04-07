@@ -33,6 +33,10 @@ class PerfilesController extends \BaseController {
 	public function store()
 	{
 		//
+		$perfil = new Perfil;
+		$perfil->nombre = Input::get('perfil');
+		$perfil->save();
+		return Redirect::to('administrarPerfiles');
 	}
 
 	/**
@@ -69,6 +73,12 @@ class PerfilesController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$perfil = Perfil::find($id);
+		$perfil->nombres = Input::get('nombre');
+		
+		$perfil->save();
+
+		return Redirect::to('administrarPerfiles');
 	}
 
 	/**
@@ -78,9 +88,16 @@ class PerfilesController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
 	public function destroy($id)
 	{
 		//
+		$perfil = Perfil::find($id);
+        $perfil->delete();
+
+        // redirect
+        Session::flash('message', 'El perfil "'.$perfil->nombre.'" se ha eliminado!');
+        return Redirect::to('administrarPerfiles');
 	}
 
 }

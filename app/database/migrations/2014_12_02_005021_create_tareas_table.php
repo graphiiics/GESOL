@@ -18,8 +18,8 @@ class CreateTareasTable extends Migration {
 			$table->string('nombre');
 			$table->integer('porcentaje');
 			$table->integer('tiempo');
-			$table->boolean('estatus');
-			$table->integer('planeacion_id');
+			$table->integer('estatus');
+			$table->integer('proyecto_id');
 			$table->integer('estudiante_id');
 			$table->timestamps();
 		});

@@ -21,10 +21,11 @@ class CreateEstudiantesTable extends Migration {
 			$table->date('fechaNacimiento');
 			$table->integer('telefono');
 			$table->integer('celular');
-			$table->string('correo');
+			$table->string('email')->unique();
 			$table->string('contrasena');
 			$table->char('sexo');
 			$table->integer('codigoPostal');
+			$table->string('direccion');
 			$table->string('estado');
 			$table->string('municipio');
 			$table->string('universidad');
@@ -34,8 +35,8 @@ class CreateEstudiantesTable extends Migration {
 			$table->integer('grado');
 			$table->double('promedio');
 			$table->string('periodo');
-			$table->boolean('estatus');
-			$table->boolean('estatusProyecto');
+			$table->integer('estatus');
+			$table->integer('estatusProyecto');
 			$table->integer('proyecto_id');
 			$table->integer('perfil_id');
 			$table->timestamps();

@@ -13,11 +13,11 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('index');
 });
 
 
-Route::resource('administadores', 'AdministradoresController');
+Route::resource('administradores', 'AdministradoresController');
 Route::resource('estudiantes', 'EstudiantesController');
 Route::resource('proyectos', 'ProyectosController');
 Route::resource('actividades', 'ActividadesController');
@@ -27,11 +27,9 @@ Route::resource('planeaciones', 'PlaneacionesController');
 Route::resource('tareas', 'TareasController');
 
 
+
+/*
 Route::get('catalogo', 'catalogoController@getCatalogo');
-
-Route::get('verProyectos', 'catalogoController@getCatalogo');
-Route::get('datos/{id}', 'catalogoController@getDatos');
-
 
 Route::get('test', function()
 {
@@ -39,22 +37,222 @@ Route::get('test', function()
 	//return 'Ola k ase!';
 });
 
+*/
+
+/*LINKS FREE*/
+
+Route::get('datos/{id}', 'catalogoController@getDatos');
+
+Route::get('verProyectos', 'catalogoController@getCatalogo');
+
 Route::get('inicio', function()
 {
 	return View::make('index');
 });
-
 Route::get('login', function()
 {
 	return View::make('login');
 });
-
-
 Route::get('nuevoEstudiante', function()
 {
-	return View::make('estudiantes/nuevo');
+	$perfiles = Perfil::all();
+	return View::make('estudiantes/nuevoEstudiante')->with('perfiles',$perfiles);
 });
 
+Route::post('acceso', 'LoginController@getAcceso');
 
+Route::get('cerrar', 'LoginController@cerrarSesion');
+/*Fin de links free*/
 
+//Grupo de rutas para estudiante [FILTRO]
+Route::group(array('before'=>'sessionEstudiante'), function(){
+	Route::get('elegirProyecto', function()
+	{
+		$proyectos = Proyecto::all();
+		return View::make('planeaciones/elegirProyecto')->with('proyectos',$proyectos);
+	});
 
+	Route::get('nuevaPlaneacion', function()
+	{
+		$proyectos = Proyecto::all();
+		return View::make('planeaciones/nuevaPlaneacion')->with('proyectos',$proyectos);
+	});
+	
+	Route::get('editarEstudiante', function()
+	{
+		return View::make('estudiantes/editarEstudiante');
+	});
+
+	Route::get('elegirProyecto', function()
+	{
+		$proyectos = Proyecto::all();
+		return View::make('estudiantes/elegirProyecto')->with('proyectos',$proyectos);
+	});
+
+	Route::get('perfilEstudiante', 'EstudiantesController@consultarEstudiante');
+	//Route::get('perfilEstudiante/{id}', 'EstudiantesController@consultarEstudiante');
+
+	Route::get('editarEstudiante', 'EstudiantesController@ponerEstudiante');
+	//Route::get('editarEstudiante/{id}', 'EstudiantesController@ponerEstudiante');
+
+	Route::post('seleccionarProyecto', 'EstudiantesController@seleccionarProyecto');
+
+	Route::get('crearPlaneacion', function()
+	{
+		$id = Session::get('id');
+		$estudiante = Estudiante::find($id);
+		$estudiantes = Estudiante::where('proyecto_id', '=', $estudiante->proyecto_id)->get();
+		return View::make('planeaciones/crearPlaneacion')->with('estudiantes',$estudiantes);
+	});
+
+	Route::get('finalizarTareas', function()
+	{
+		$id = Session::get('id');
+		$estudiante = Estudiante::find($id);
+		$tareas = Tarea::where('proyecto_id', '=', $estudiante->proyecto_id)->where('estatus', '=', 0)->get();
+		$tareasPendientes = Tarea::where('proyecto_id', '=', $estudiante->proyecto_id)->where('estatus', '=', 1)->get();
+		$tareasTerminadas = Tarea::where('proyecto_id', '=', $estudiante->proyecto_id)->where('estatus', '=', 2)->get();
+		
+		$porcentaje = 0;
+
+		for ($i = 0; $i < count($tareasTerminadas); $i++) {
+    		
+    		$porcentaje += $tareasTerminadas[$i]->porcentaje;
+		}
+
+		return View::make('tareas/finalizarTareas', array('tareas' => $tareas, 'tareasPendientes' => $tareasPendientes, 'tareasTerminadas' => $tareasTerminadas, 'porcentaje' => $porcentaje));
+	});
+
+	Route::get('validarTarea/{id}', 'TareasController@validarTarea');
+	Route::get('eliminarTarea/{id}', 'TareasController@eliminarTarea');
+
+	Route::get('subirBeca', function()
+	{
+		return View::make('becas/subirBeca');
+	});
+
+	Route::post('uploadBeca', 'BecasController@uploadBeca');
+	
+});
+
+//Grupo de rutas para Administrador [FILTRO]
+Route::group(array('before'=>'sessionAdministrador'), function(){
+	
+	Route::get('cuentasAdministradores', function()
+	{
+		$cuentas = Administrador::all();
+		return View::make('administradores/cuentasAdministradores')->with('cuentas',$cuentas);
+	});
+
+	Route::get('nuevoAdministrador', function()
+	{
+		return View::make('administradores/nuevoAdministrador');
+	});
+
+	Route::get('editarProyectos', function()
+	{
+		$proyectos = Proyecto::all();
+		return View::make('proyectos/editarProyectos')->with('proyectos',$proyectos);
+	});
+
+	Route::get('aprobarEstudiantes/{id}', 'EstudiantesController@aprobarEstudiante');
+
+	Route::get('rechazarEstudiantes/{id}', 'EstudiantesController@rechazarEstudiante');
+	
+	Route::get('administrarEstudiantes', function()
+	{
+		$estudiantes = Estudiante::where('estatus', '=', 1)->get();
+		return View::make('estudiantes/administrarEstudiantes')->with('estudiantes',$estudiantes);
+	});
+
+	Route::get('validarEstudiantes', function()
+	{
+	$estudiantes = Estudiante::where('estatus', '=', 0)->get();
+	return View::make('estudiantes/validarEstudiantes')->with('estudiantes',$estudiantes);
+	});
+
+	Route::get('nuevoProyecto', function()
+	{
+		$perfiles = Perfil::all();
+		return View::make('proyectos/nuevoProyecto')->with('perfiles',$perfiles);
+	});
+
+	Route::get('aprobarProyectos', function()
+	{
+		$estudiantes = Estudiante::where('proyecto_id', '!=', 0)->where('estatusProyecto', '=', 0)->get();
+		return View::make('estudiantes/aprobarProyecto')->with('estudiantes',$estudiantes);
+	});
+
+	Route::get('aprobarProyectoEstudiante/{id}', 'EstudiantesController@aprobarProyecto');
+
+	Route::get('rechazarProyectoEstudiante/{id}', 'EstudiantesController@rechazarProyecto');
+
+	Route::get('validarTareas', function()
+	{
+		
+		$tareas = Tarea::where('estatus', '=', 1)->get();
+
+		
+
+		return View::make('tareas/validarTareas')->with('tareas',$tareas);
+	});
+
+	Route::get('aprobarTarea/{id}', 'TareasController@aprobarTarea');
+	Route::get('rechazarTarea/{id}', 'TareasController@rechazarTarea');
+
+	Route::get('avanceProyectos', function()
+	{
+		
+		$proyectos = Proyecto::all();
+		$tareas = Tarea::all();
+		//$tareas = Tarea::where('estatus', '=', 2)->get();
+
+		$porcentaje = 0;
+		for ($i = 0; $i < count($proyectos); $i++) 
+		{
+			for ($j = 0; $j < count($tareas); $j++) 
+			{
+				if(($tareas[$j]->proyecto_id == $proyectos[$i]->id) && ($tareas[$j]->estatus == 2))
+				{
+					$porcentaje += $tareas[$j]->porcentaje;
+				}
+			}
+			$proyecto = Proyecto::find($proyectos[$i]->id);
+			$proyecto->porcentaje = $porcentaje;
+			$proyecto->save();
+    		$porcentaje = 0;
+		}
+		$proyectosAvance = Proyecto::all();
+		return View::make('proyectos/avanceProyectos')->with('proyectosAvance',$proyectosAvance);
+		
+	});
+
+	Route::get('consultarBecas', function()
+	{
+		$becas = Beca::all();
+		return View::make('becas/consultarBecas')->with('becas',$becas);
+	});
+
+	Route::get('descargarSolicitud/{id}', 'BecasController@descargarSolicitud');
+	Route::get('descargarCURP/{id}', 'BecasController@descargarCURP');
+	Route::get('descargarIFE/{id}', 'BecasController@descargarIFE');
+	Route::get('descargarPrestacion/{id}', 'BecasController@descargarPrestacion');
+	Route::get('descargarAceptacion/{id}', 'BecasController@descargarAceptacion');
+
+	Route::get('administrarPerfiles', function()
+	{
+		$perfiles = Perfil::all();
+		return View::make('perfiles/administrarPerfiles')->with('perfiles',$perfiles);
+	});
+
+		
+});
+
+//Route::get('perfilEstudiante/{$id}', 'EstudiantesController@consultarEstudiante');
+
+/*Route::get('perfilEstudiante/{id}', function($id)
+	{
+		//return View::make('estudiantes/editarEstudiante');
+		return ($id);
+	});
+	

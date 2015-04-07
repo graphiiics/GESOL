@@ -26,8 +26,6 @@ function catalogox()
 
 			function llegada (data)
 			{
-				
-
 				$('#resultado').html(data);			
 			}
 

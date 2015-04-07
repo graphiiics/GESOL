@@ -34,6 +34,11 @@ class AdministradoresController extends \BaseController {
 	public function store()
 	{
 		//
+		 	$admin = new Administrador;
+            $admin->usuario   = Input::get('usuario');
+            $admin->password  = Input::get('password');
+            $admin->save();
+            return Redirect::to('cuentasAdministradores');
 	}
 
 	/**
@@ -82,6 +87,12 @@ class AdministradoresController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		$cuenta = Administrador::find($id);
+        $cuenta->delete();
+
+        // redirect
+        Session::flash('message', 'La cuenta de administrador "'.$cuenta->usuario.'" se ha eliminado!');
+        return Redirect::to('cuentasAdministradores');
 	}
 
 }

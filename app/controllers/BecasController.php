@@ -33,6 +33,18 @@ class BecasController extends \BaseController {
 	public function store()
 	{
 		//
+		$file = Input::file("solicitudBeca");
+		$beca = new beca;
+		$id = Session::get('id');
+		$beca->perfil = Input::get('perfil');
+		$beca->cartaSolicitud = $file;
+		$beca->estudiante_id = $id;
+		$file->move("becas",$file->getClientOriginalName());
+
+		$beca->save();
+
+
+		return Redirect::to('perfilEstudiante/'.$id);
 	}
 
 	/**
@@ -81,6 +93,144 @@ class BecasController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function uploadBeca()
+	{
+	
+		$id = Session::get('id');
+		$estudiante = Estudiante::find($id);
+
+		$nombreCarpeta = $estudiante->nombres.' '.$estudiante->apellidos;
+
+		$beca = new beca;
+		$beca->perfil = Input::get('perfil');
+		$beca->estudiante_id = $id;
+		$beca->periodo = Input::get('periodo');;
+
+		//Carta Solicitud de servicio
+		$fileSolicitud = Input::file('cartaSolicitud');
+		$extSolicitud = $fileSolicitud->getClientOriginalExtension();
+		$nombreSolicitud = 'cartaSolicitud_'.$estudiante->id.'_'.$estudiante->nombres.'.'.$extSolicitud;
+		$fileSolicitud->move('becas/'.$nombreCarpeta,$nombreSolicitud);
+
+
+		//CURP
+		$fileCURP = Input::file('curp');
+		$extCURP = $fileCURP->getClientOriginalExtension();
+		$nombreCURP = 'CURP_'.$estudiante->id.'_'.$estudiante->nombres.'.'.$extCURP;
+		$fileCURP->move('becas/'.$nombreCarpeta,$nombreCURP);
+
+		//IFE
+		$fileIFE = Input::file('ife');
+		$extIFE = $fileIFE->getClientOriginalExtension();
+		$nombreIFE = 'IFE_'.$estudiante->id.'_'.$estudiante->nombres.'.'.$extIFE;
+		$fileIFE->move('becas/'.$nombreCarpeta,$nombreIFE);
+
+		//Carta Prestación Servicio
+		$fileCartaPrestacion = Input::file('cartaPrestacion');
+		$extCartaPrestacion = $fileCartaPrestacion->getClientOriginalExtension();
+		$nombreCartaPrestacion = 'CartaPrestacion_'.$estudiante->id.'_'.$estudiante->nombres.'.'.$extCartaPrestacion;
+		$fileCartaPrestacion->move('becas/'.$nombreCarpeta,$nombreCartaPrestacion);
+
+		//Carta Aceptación Servicio
+		$fileCartaAceptacion = Input::file('cartaAceptacion');
+		$extCartaAceptacion = $fileCartaAceptacion->getClientOriginalExtension();
+		$nombreCartaAceptacion = 'CartaAceptacion_'.$estudiante->id.'_'.$estudiante->nombres.'.'.$extCartaAceptacion;
+		$fileCartaAceptacion->move('becas/'.$nombreCarpeta,$nombreCartaAceptacion);
+
+
+
+
+		$beca->cartaSolicitud = $nombreSolicitud;
+		$beca->curp = $nombreCURP;
+		$beca->ife = $nombreIFE;
+		$beca->cartaPrestacion = $nombreCartaPrestacion;
+		$beca->cartaAceptacion = $nombreCartaAceptacion;
+
+
+		$beca->save();
+
+		
+		return Redirect::to('perfilEstudiante');
+
+		//return Redirect::to('perfilEstudiante/'.$id);
+	}
+
+
+	public function descargarSolicitud($id)
+	{
+
+		$estudiante = Estudiante::find($id);
+		$nombreCarpeta = $estudiante->nombres.' '.$estudiante->apellidos;
+		$nombreSolicitud = 'cartaSolicitud_'.$estudiante->id.'_'.$estudiante->nombres.'.pdf';
+
+		$file= public_path(). '/becas/'.$nombreCarpeta.'/'.$nombreSolicitud;
+        $headers = array(
+              'Content-Type: application/pdf',
+            );
+        return Response::download($file, $nombreSolicitud , $headers);
+
+	}
+
+	public function descargarCURP($id)
+	{
+
+		$estudiante = Estudiante::find($id);
+		$nombreCarpeta = $estudiante->nombres.' '.$estudiante->apellidos;
+		$nombreCURP = 'CURP_'.$estudiante->id.'_'.$estudiante->nombres.'.pdf';
+
+		$file= public_path(). '/becas/'.$nombreCarpeta.'/'.$nombreCURP;
+        $headers = array(
+              'Content-Type: application/pdf',
+            );
+        return Response::download($file, $nombreCURP , $headers);
+
+	}
+
+	public function descargarIFE($id)
+	{
+
+		$estudiante = Estudiante::find($id);
+		$nombreCarpeta = $estudiante->nombres.' '.$estudiante->apellidos;
+		$nombreIFE = 'IFE_'.$estudiante->id.'_'.$estudiante->nombres.'.pdf';
+
+		$file= public_path(). '/becas/'.$nombreCarpeta.'/'.$nombreIFE;
+        $headers = array(
+              'Content-Type: application/pdf',
+            );
+        return Response::download($file, $nombreIFE , $headers);
+
+	}
+
+	public function descargarPrestacion($id)
+	{
+
+		$estudiante = Estudiante::find($id);
+		$nombreCarpeta = $estudiante->nombres.' '.$estudiante->apellidos;
+		$nombreCartaPrestacion = 'CartaPrestacion_'.$estudiante->id.'_'.$estudiante->nombres.'.pdf';
+
+		$file= public_path(). '/becas/'.$nombreCarpeta.'/'.$nombreCartaPrestacion;
+        $headers = array(
+              'Content-Type: application/pdf',
+            );
+        return Response::download($file, $nombreCartaPrestacion , $headers);
+
+	}
+
+	public function descargarAceptacion($id)
+	{
+
+		$estudiante = Estudiante::find($id);
+		$nombreCarpeta = $estudiante->nombres.' '.$estudiante->apellidos;
+		$nombreCartaAceptacion = 'CartaAceptacion_'.$estudiante->id.'_'.$estudiante->nombres.'.pdf';
+
+		$file= public_path(). '/becas/'.$nombreCarpeta.'/'.$nombreCartaAceptacion;
+        $headers = array(
+              'Content-Type: application/pdf',
+            );
+        return Response::download($file, $nombreCartaAceptacion , $headers);
+
 	}
 
 }

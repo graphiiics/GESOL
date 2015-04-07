@@ -88,3 +88,21 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('sessionEstudiante', function(){
+	if(Session::get('tipo') != 'Estudiante')
+	{
+		return Redirect::to('login');
+	}
+});
+
+Route::filter('sessionAdministrador', function(){
+	if(Session::get('tipo') != 'Administrador')
+	{
+		return Redirect::to('login');
+	}
+});
+
+
+
+

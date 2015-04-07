@@ -9,7 +9,7 @@ class FullAllTablesSeeder extends Seeder {
 		DB::table('actividades')->delete();
 		DB::table('perfiles')->delete();
 		DB::table('perfil_proyecto')->delete();
-		DB::table('planeaciones')->delete();
+		//DB::table('planeaciones')->delete();
 		DB::table('tareas')->delete();
 		DB::table('estudiantes')->delete();
 		DB::table('becas')->delete();
@@ -87,7 +87,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 6',
 			'dependencia'		=>	'gobierno',
-			'tipoProyecto'		=>	'Aplicaciones moviles',
+			'tipoProyecto'		=>	'Aplicaciones móviles',
 			'duracion'			=>	10,
 			'numeroIntegrantes'	=>	5,
 			'objetivo'			=>	'objetivo proyecto 6',
@@ -140,7 +140,7 @@ class FullAllTablesSeeder extends Seeder {
 
 			'nombre'			=>	'proyecto 10',
 			'dependencia'		=>	'labsol',
-			'tipoProyecto'		=>	'Aplicaciones moviles',
+			'tipoProyecto'		=>	'Aplicaciones móviles',
 			'duracion'			=>	10,
 			'numeroIntegrantes'	=>	9,
 			'objetivo'			=>	'objetivo proyecto 10',
@@ -343,6 +343,7 @@ class FullAllTablesSeeder extends Seeder {
 
 
 		//Molde de planeacion
+		/*
 		$planeacion1 = Planeacion::create(array(
 			'porcentaje' 	=> 50,
 			'proyecto_id' 	=> $proyecto1->id
@@ -394,7 +395,7 @@ class FullAllTablesSeeder extends Seeder {
 			));
 
 		$this->command->info('planeaciones listo!');
-
+		*/
 
 
 		//Llenar estudiantes
@@ -1059,7 +1060,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion1->id,
+				'proyecto_id'	=> $proyecto1->id,
 				'estudiante_id'	=> $estudiante1->id
 				));
 			$tarea2 = Tarea::create(array(
@@ -1067,7 +1068,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion1->id,
+				'proyecto_id'	=> $proyecto1->id,
 				'estudiante_id'	=> $estudiante1->id
 				));
 			$tarea3 = Tarea::create(array(
@@ -1075,7 +1076,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion1->id,
+				'proyecto_id'	=> $proyecto1->id,
 				'estudiante_id'	=> $estudiante2->id
 				));
 
@@ -1084,7 +1085,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion2->id,
+				'proyecto_id'	=> $proyecto2->id,
 				'estudiante_id'	=> $estudiante3->id
 				));
 			$tarea5 = Tarea::create(array(
@@ -1092,7 +1093,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion2->id,
+				'proyecto_id'	=> $proyecto2->id,
 				'estudiante_id'	=> $estudiante3->id
 				));
 			$tarea6 = Tarea::create(array(
@@ -1100,7 +1101,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion2->id,
+				'proyecto_id'	=> $proyecto2->id,
 				'estudiante_id'	=> $estudiante4->id
 				));
 
@@ -1109,7 +1110,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion3->id,
+				'proyecto_id'	=> $proyecto3->id,
 				'estudiante_id'	=> $estudiante5->id
 				));
 			$tarea8 = Tarea::create(array(
@@ -1117,7 +1118,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion3->id,
+				'proyecto_id'	=> $proyecto3->id,
 				'estudiante_id'	=> $estudiante5->id
 				));
 			$tarea9 = Tarea::create(array(
@@ -1125,7 +1126,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion3->id,
+				'proyecto_id'	=> $proyecto3->id,
 				'estudiante_id'	=> $estudiante6->id
 				));
 
@@ -1134,7 +1135,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion4->id,
+				'proyecto_id'	=> $proyecto4->id,
 				'estudiante_id'	=> $estudiante7->id
 				));
 			$tarea11 = Tarea::create(array(
@@ -1142,7 +1143,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion4->id,
+				'proyecto_id'	=> $proyecto4->id,
 				'estudiante_id'	=> $estudiante7->id
 				));
 			$tarea12 = Tarea::create(array(
@@ -1150,7 +1151,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion4->id,
+				'proyecto_id'	=> $proyecto4->id,
 				'estudiante_id'	=> $estudiante8->id
 				));
 
@@ -1159,7 +1160,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion5->id,
+				'proyecto_id'	=> $proyecto5->id,
 				'estudiante_id'	=> $estudiante9->id
 				));
 			$tarea14 = Tarea::create(array(
@@ -1167,7 +1168,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion5->id,
+				'proyecto_id'	=> $proyecto5->id,
 				'estudiante_id'	=> $estudiante9->id
 				));
 			$tarea15 = Tarea::create(array(
@@ -1175,7 +1176,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion5->id,
+				'proyecto_id'	=> $proyecto5->id,
 				'estudiante_id'	=> $estudiante10->id
 				));
 
@@ -1184,7 +1185,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion6->id,
+				'proyecto_id'	=> $proyecto6->id,
 				'estudiante_id'	=> $estudiante11->id
 				));
 			$tarea17 = Tarea::create(array(
@@ -1192,7 +1193,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion6->id,
+				'proyecto_id'	=> $proyecto6->id,
 				'estudiante_id'	=> $estudiante11->id
 				));
 			$tarea18 = Tarea::create(array(
@@ -1200,7 +1201,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion6->id,
+				'proyecto_id'	=> $proyecto6->id,
 				'estudiante_id'	=> $estudiante12->id
 				));
 
@@ -1209,7 +1210,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion7->id,
+				'proyecto_id'	=> $proyecto7->id,
 				'estudiante_id'	=> $estudiante13->id
 				));
 			$tarea20 = Tarea::create(array(
@@ -1217,7 +1218,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion7->id,
+				'proyecto_id'	=> $proyecto7->id,
 				'estudiante_id'	=> $estudiante14->id
 				));
 			$tarea21 = Tarea::create(array(
@@ -1225,7 +1226,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion7->id,
+				'proyecto_id'	=> $proyecto7->id,
 				'estudiante_id'	=> $estudiante15->id
 				));
 
@@ -1234,7 +1235,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion8->id,
+				'proyecto_id'	=> $proyecto8->id,
 				'estudiante_id'	=> $estudiante16->id
 				));
 			$tarea23 = Tarea::create(array(
@@ -1242,7 +1243,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion8->id,
+				'proyecto_id'	=> $proyecto8->id,
 				'estudiante_id'	=> $estudiante17->id
 				));
 			$tarea24 = Tarea::create(array(
@@ -1250,7 +1251,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion8->id,
+				'proyecto_id'	=> $proyecto8->id,
 				'estudiante_id'	=> $estudiante18->id
 				));
 
@@ -1259,7 +1260,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion9->id,
+				'proyecto_id'	=> $proyecto9->id,
 				'estudiante_id'	=> $estudiante19->id
 				));
 			$tarea26 = Tarea::create(array(
@@ -1267,7 +1268,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion9->id,
+				'proyecto_id'	=> $proyecto9->id,
 				'estudiante_id'	=> $estudiante20->id
 				));
 			$tarea27 = Tarea::create(array(
@@ -1275,7 +1276,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion9->id,
+				'proyecto_id'	=> $proyecto9->id,
 				'estudiante_id'	=> $estudiante21->id
 				));
 
@@ -1284,7 +1285,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion10->id,
+				'proyecto_id'	=> $proyecto10->id,
 				'estudiante_id'	=> $estudiante22->id
 				));
 			$tarea29 = Tarea::create(array(
@@ -1292,7 +1293,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion10->id,
+				'proyecto_id'	=> $proyecto10->id,
 				'estudiante_id'	=> $estudiante23->id
 				));
 			$tarea30 = Tarea::create(array(
@@ -1300,7 +1301,7 @@ class FullAllTablesSeeder extends Seeder {
 				'porcentaje'	=> 20,
 				'tiempo'		=> 7,
 				'estatus'		=> 1,
-				'planeacion_id'	=> $planeacion10->id,
+				'proyecto_id'	=> $proyecto10->id,
 				'estudiante_id'	=> $estudiante24->id
 				));
 

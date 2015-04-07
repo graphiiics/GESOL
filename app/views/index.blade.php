@@ -47,33 +47,33 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+          <img src="img/talleres.jpg" alt="First slide">
           <div class="container">
-            <div class="carousel-caption">
+            <!--div class="carousel-caption">
               <h1>Example headline.</h1>
               <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-            </div>
+            </div-->
           </div>
         </div>
         <div class="item">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAGZmZgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+          <img src="img/labsol.png" alt="Second slide">
           <div class="container">
-            <div class="carousel-caption">
+            <!--div class="carousel-caption">
               <h1>Another example headline.</h1>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-            </div>
+            </div-->
           </div>
         </div>
         <div class="item">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+          <img src="img/labsol2.jpg" alt="Third slide">
           <div class="container">
-            <div class="carousel-caption">
+            <!--div class="carousel-caption">
               <h1>One more for good measure.</h1>
               <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
+            </div-->
           </div>
         </div>
       </div>
@@ -89,13 +89,17 @@
 @stop
 
 @section('pie')
-	<h6>Aqui hay que poner los datos de labsol y sus redes sociales</h6>
-	<div class="media">
-	  <a class="media-left pull-right" href="#">
-	    <img src="..." alt="facebook">
-	  </a>
-	  <a class="media-left pull-right" href="#">
-	    <img src="..." alt="twitter">
-	  </a>
-	</div>
+<div class="col-md-10 col-md-offset-0">
+     <div class="panel-body form-center payment-form">
+    	<h5>Consejo Zacatecano de Ciencia, Tecnología e Innovación De la Juventud 504, Col. Barros Sierra C.P. 98090 Zacatecas, Zac.</h5>
+    </div>
+  </div>
+  <div class="col-md-2 media">
+        <a class="media-left pull-right"  href="">
+          <img src="img/facebook.png" alt="facebook">
+        </a>
+        <a class="media-left pull-right"  href="#">
+          <img src="img/twitter.png" alt="twitter">
+        </a>
+     </div>
 @stop

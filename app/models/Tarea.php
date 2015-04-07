@@ -9,9 +9,9 @@ class Tarea extends \Eloquent {
 		return $this->belongsTo('Estudiante');
 	}
 
-	public function planeacion(){
+	public function proyecto(){
 
-		return $this->belongsTo('Planeacion');
+		return $this->belongsTo('Proyecto');
 	}
 
 	

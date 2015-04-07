@@ -102,7 +102,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-folder-close">
-                            </span> Aplicaciones Moviles</a>
+                            </span> Aplicaciones Móviles</a>
                         </h4>
                     </div>
                     <div id="collapseFour" class="panel-collapse collapse">

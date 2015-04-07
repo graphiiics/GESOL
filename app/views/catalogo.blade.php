@@ -211,7 +211,7 @@
             </div>
         </div>
         <div class="col-sm-9 col-md-9">
-            <div id="resultado">
+            <div class="well" id="resultado">
                 <h1>
                     Accordion Menu With Icon</h1>
                 Admin Dashboard Accordion Menu

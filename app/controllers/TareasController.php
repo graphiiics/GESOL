@@ -33,6 +33,21 @@ class TareasController extends \BaseController {
 	public function store()
 	{
 		//
+		$id = Session::get('id');
+		$estudiante = Estudiante::find($id);
+		$numTareas = Input::get('numeroTareas');
+		for ($i = 1; $i <= $numTareas; $i++) 
+		{
+    		$tarea[$i] = new Tarea;
+    		$tarea[$i]->nombre = Input::get('nombre'.$i);
+    		$tarea[$i]->porcentaje = Input::get('porcentaje'.$i);
+    		$tarea[$i]->tiempo = Input::get('duracion'.$i);
+    		$tarea[$i]->proyecto_id = $estudiante->proyecto_id;
+    		
+    		$tarea[$i]->save();
+		}
+
+		return Redirect::to('perfilEstudiante/'.$id);
 	}
 
 	/**
@@ -81,6 +96,55 @@ class TareasController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+
+	public function validarTarea($id)
+	{
+		
+		$tarea = Tarea::find($id);
+
+		$tarea->estatus = 1;
+		$tarea->save(); 
+
+		return Redirect::to('finalizarTareas');
+
+	}
+
+	public function eliminarTarea($id)
+	{
+		
+		$tarea = Tarea::find($id);
+		$tarea->delete();
+		Session::flash('message', 'La tarea "'.$tarea->nombre.'" se ha eliminado!');
+
+		return Redirect::to('finalizarTareas');
+
+	}
+
+
+	public function aprobarTarea($id)
+	{
+		
+		$tarea = Tarea::find($id);
+
+		$tarea->estatus = 2;
+		$tarea->save(); 
+		Session::flash('message', 'La tarea "'.$tarea->nombre.'" se ha aprobado!');
+		return Redirect::to('validarTareas');
+
+	}
+
+	public function rechazarTarea($id)
+	{
+		
+		$tarea = Tarea::find($id);
+
+		$tarea->estatus = 0;
+		$tarea->save(); 
+		Session::flash('message', 'La tarea "'.$tarea->nombre.'" se ha rechazado!');
+		return Redirect::to('validarTareas');
+
 	}
 
 }

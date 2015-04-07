@@ -22,6 +22,7 @@ class CreateProyectosTable extends Migration {
 			$table->integer('numeroIntegrantes');
 			$table->string('objetivo');
 			$table->text('descripcion');
+			$table->integer('porcentaje');
 			$table->timestamps();
 		});
 	}

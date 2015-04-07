@@ -10,7 +10,7 @@ class catalogoController extends BaseController{
 		 
 		 $proyectosLinux = Proyecto::where('tipoProyecto', '=', 'Linux y kernel')->get();
 
-		 $proyectosMoviles = Proyecto::where('tipoProyecto', '=', 'Aplicaciones moviles')->get();
+		 $proyectosMoviles = Proyecto::where('tipoProyecto', '=', 'Aplicaciones móviles')->get();
 
 		 $proyectosHardware = Proyecto::where('tipoProyecto', '=', 'Hardware libre')->get();
 
@@ -24,17 +24,33 @@ class catalogoController extends BaseController{
 	{
 		$proyecto = Proyecto::find($id);
 
-		echo ("<h2><b>Nombre:</b> ".$proyecto->nombre."</h2>");
-		echo ("<h4><b>Dependencia:</b> ".$proyecto->dependencia."</h4>");
-		echo ("<h4><b>Duración:</b> ".$proyecto->duracion." semanas</h4>");
-		echo ("<h4><b>Número de integrantes:</b> ".$proyecto->numeroIntegrantes."</h4>");
+		echo ("<div class='panel panel-default'>");
+		echo ("<div class='panel-body form-horizontal payment-form'>");
+	
+		echo ("<h2 class='text-center'>".$proyecto->nombre."</h2>");
+		
+		echo ("<hr/>");
+		echo ("<h4><b>Dependencia:</b></h4><samp> ".$proyecto->dependencia."</samp>");
+
+		echo ("<h4><b>Objetivo:</b></h4><p><samp> ".$proyecto->objetivo."</samp></p>");
+		echo ("<h4><b>Descripción:</b></h4><p><samp> ".$proyecto->descripcion."</samp></p>");
+
+		echo ("<h4><b>Duración:</b> </h4><samp>".$proyecto->duracion." semanas</samp>");
+		echo ("<h4><b>Número de integrantes:</b></h4><samp> ".$proyecto->numeroIntegrantes." personas</samp> ");
 		echo ("<h4><b>Perfiles requeridos:</b></h4><la>");
 		foreach ($proyecto->perfiles as $perfil) {
-			echo ("<li>".$perfil->nombre."</li>");
+			echo ("<li><samp>".$perfil->nombre."</samp></li>");
 			
 		}
-		echo ("</la><p><b>Objetivo:</b><br> ".$proyecto->objetivo."</p>");
-		echo ("<p><b>Descripción:</b><br> ".$proyecto->descripcion."</p>");
+		echo ("<h4><b>Actividades principales:</b></h4><la>");
+		foreach ($proyecto->actividades as $actividad) {
+			echo ("<li><samp>".$actividad->nombre."</samp></li>");
+			
+		}
+		echo ("</la>");
+
+		echo ("</div>");
+		echo ("</div>");
 		
 
 		//return $resultado;

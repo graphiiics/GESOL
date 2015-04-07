@@ -14,15 +14,23 @@ class Proyecto extends \Eloquent {
 		return $this->hasMany('Actividad');
 	}
 
-	public function planeacion(){
+	public function tareas(){
 
-		return $this->hasOne('Planeacion');
+		return $this->hasMany('Tarea');
 	}
 
 	public function perfiles(){
 
 		return $this->belongsToMany('Perfil');
 	}
+
+	public function delete()
+    {
+    	$this->actividades()->delete();
+        $this->perfiles()->detach();
+        return parent::delete();
+    }
+
 
 	
 }
