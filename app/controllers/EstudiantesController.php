@@ -56,6 +56,9 @@ class EstudiantesController extends \BaseController {
 		$estudiante->periodo = Input::get('periodo');
 		$estudiante->perfil_id = Input::get('perfil_id');
 		$estudiante->direccion = Input::get('direccion');
+		$estudiante->estatus = 0;
+		$estudiante->estatusProyecto = 0;
+		$estudiante->proyecto_id = 0;
 		
 		$estudiante->save();
 
@@ -151,7 +154,7 @@ class EstudiantesController extends \BaseController {
 
 	public function aprobarEstudiante($id)
 	{
-		$estudiante = estudiante::find($id);
+		$estudiante = Estudiante::find($id);
 
 		$estudiante->estatus = 1;
 		$estudiante->save(); 
@@ -162,7 +165,7 @@ class EstudiantesController extends \BaseController {
 
 	public function rechazarEstudiante($id)
 	{
-		$estudiante = estudiante::find($id);
+		$estudiante = Estudiante::find($id);
 
 		$estudiante->estatus = 2;
 		$estudiante->save(); 
@@ -211,7 +214,7 @@ class EstudiantesController extends \BaseController {
 	public function aprobarProyecto($id)
 	{
 		
-		$estudiante = estudiante::find($id);
+		$estudiante = Estudiante::find($id);
 
 		$estudiante->estatusProyecto = 1;
 		$estudiante->save(); 
@@ -223,7 +226,7 @@ class EstudiantesController extends \BaseController {
 	public function rechazarProyecto($id)
 	{
 		
-		$estudiante = estudiante::find($id);
+		$estudiante = Estudiante::find($id);
 
 		$estudiante->estatusProyecto = 2;
 		$estudiante->save(); 
