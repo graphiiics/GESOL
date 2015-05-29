@@ -14,6 +14,16 @@
 @stop
 
 @section('contenido')
+    @if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
+    @if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>        
+            @endforeach
+        </div>
+    @endif
 	{{ Form::open(array('url' => 'uploadBeca', 'enctype' => 'multipart/form-data')) }}
 		<div class="col-md-12 col-md-offset-0">
             <h4>Subir Documentación Beca</h4>
@@ -78,30 +88,6 @@
                             <input type="file" name="cartaAceptacion" id="cartaAceptacion" class="form-control" required>
                         </div>
                     </div>
-                    <!--div class="form-group">
-                        <label for="status" class="col-sm-4 control-label">CURP:</label>
-                        <div class="col-sm-5">
-                          	<input id="curp" name="curp" type="file" class="file">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="status" class="col-sm-4 control-label">IFE:</label>
-                        <div class="col-sm-5">
-                          	<input id="ife" name="ife" type="file" class="file">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="status" class="col-sm-4 control-label">Carta Prestación servicio:</label>
-                        <div class="col-sm-5">
-                          	<input id="cartaPrestacion" name="cartaPrestacion" type="file" class="file">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="status" class="col-sm-4 control-label">Carta Aceptación servicio:</label>
-                        <div class="col-sm-5">
-                          	<input id="cartaAceptacion" name="cartaAceptacion" type="file" class="file">
-                        </div>
-                    </div-->
                     
                 {{--Aqui termina el formulario--}}
                     <div class="form-group">
@@ -111,6 +97,51 @@
                         {{ Form::close() }}  
                             </div>
                     </div>
+                    {{--Aqui comienza la tabla para descargar y eliminar la beca--}}
+                    <hr>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Carta Solicitud</td>
+                                <td>CURP</td>
+                                <td>IFE</td>
+                                <td>Carta Prestación</td>
+                                <td>Carta Aceptación</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($becax as $beca)
+                         
+                            <tr>
+                                <td>{{ $beca->estudiante->nombres}} {{$beca->estudiante->apellidos}}</td>
+                                
+
+                               
+                                <td>
+                                    <a class="btn btn-small btn-success" href="{{ URL::to('descargarSolicitudEstudiante/' . $beca->estudiante->id) }}">Descargar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small btn-success" href="{{ URL::to('descargarCURPEstudiante/' . $beca->estudiante->id) }}">Descargar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small btn-success" href="{{ URL::to('descargarIFEEstudiante/' . $beca->estudiante->id) }}">Descargar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small btn-success" href="{{ URL::to('descargarPrestacionEstudiante/' . $beca->estudiante->id) }}">Descargar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small btn-success" href="{{ URL::to('descargarAceptacionEstudiante/' . $beca->estudiante->id) }}">Descargar</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small btn-danger" href="{{ URL::to('eliminarBeca/' . $beca->id )}}">Eliminar</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        
+                        </tbody>
+                    </table>
             	</div>
             </div>            
     	</div>

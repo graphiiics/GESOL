@@ -12,8 +12,15 @@
 <body>
 	<div class="container">
 		<div class="col-sm-12 col-md-12">
+			<div id="dependencias">
+				<img src="img/labsol.png"  width="206" height="79" align="right" padding="10px">
+				<img src="img/cozcyt.png"  width="291" height="98">
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12">
 			<div id="cabecera">
 				@yield('cabecera')
+				
 			</div>
 		</div>
 		

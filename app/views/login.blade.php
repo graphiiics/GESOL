@@ -14,7 +14,7 @@
 	    </a>
 	  </div>
 	  <div class="btn-group" role="group">
-	    <a href="{{ URL::to('proyectos/ver') }}">
+	    <a href="{{ URL::to('verProyectos') }}">
 		    <button type="button" class="btn btn-default">Proyectos</button>
 	    </a>
 	  </div>
@@ -25,13 +25,17 @@
 	  </div>
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('login') }}">
-		    <button type="button" class="btn btn-default">Login</button>
+		    <button type="button" class="btn btn-default">Mi cuenta</button>
 	    </a>
 	  </div>
 	</div>
 @stop
 
 @section('contenido')
+    <!-- will be used to show any messages -->
+    @if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
 	{{ Form::open(array('url' => 'acceso')) }}
 		<div class="col-md-12 col-md-offset-0">
             <h4>Login</h4>

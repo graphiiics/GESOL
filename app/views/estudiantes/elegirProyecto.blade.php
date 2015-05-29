@@ -12,9 +12,14 @@
    
 @stop
 @section('contenido')
+    <!-- will be used to show any messages -->
+    @if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
+
 {{ Form::open(array('url' => 'seleccionarProyecto')) }}
     <div class="col-md-12 col-md-offset-0">
-            <h4>Registro de Estudiante:</h4>
+            <h4>Seleccionar proyecto:</h4>
             <div class="panel panel-default">
                 
                 <div class="panel-body form-horizontal payment-form">

@@ -27,7 +27,7 @@
 	  </div>
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('login') }}">
-		    <button type="button" class="btn btn-default">Login</button>
+		    <button type="button" class="btn btn-default">Mi cuenta</button>
 	    </a>
 	  </div>
 	</div>

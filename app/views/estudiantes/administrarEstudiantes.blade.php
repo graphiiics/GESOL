@@ -22,7 +22,7 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <td>Nombre</td>
+                <td>Estudiantes</td>
                 <td>Acciones</td>
             </tr>
         </thead>

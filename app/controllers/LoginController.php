@@ -30,6 +30,7 @@ class loginController extends BaseController{
 					//return "Entraste pequeño ID: ".$estudiante->id."->".$estudiante->nombres;
 				}
 			}
+			Session::flash('message', 'Posiblemente tu usuario o contraseña se encuentren escritas incorrectamente, de lo contrario puede que tu cuenta aun no sea validada, si es así ponte en contacto con el administrador para validar tu cuenta.');
 			return Redirect::to('login');
 
 		}

@@ -12,9 +12,18 @@
     
 @stop
 @section('contenido')
+
+@if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>        
+            @endforeach
+        </div>
+@endif
+
 {{ Form::model($estudiante, array('route' => array('estudiantes.update', $estudiante->id), 'method' => 'PUT')) }}
     <div class="col-md-12 col-md-offset-0">
-            <h4>Registro de Estudiante:</h4>
+            <h4>Actualización de Estudiante:</h4>
             <div class="panel panel-default">
                 
                 <div class="panel-body form-horizontal payment-form">

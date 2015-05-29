@@ -15,7 +15,7 @@
 @section('contenido')
 {{ Form::open(array('url' => 'tareas')) }}
     <div class="col-md-12 col-md-offset-0">
-            <h4>Registro de Estudiante:</h4>
+            <h4>Crear nuevas tareas:</h4>
             <div class="panel panel-default">
                 
                 <div class="panel-body form-horizontal payment-form">
@@ -44,7 +44,7 @@
                     
                     <div class="form-group">
                         <div class="col-sm-10 text-right">
-                     {{ Form::submit('Elegir Proyecto', array('class' => 'btn btn-primary')) }}
+                     {{ Form::submit('Crear Tareas', array('class' => 'btn btn-primary')) }}
 
 
                     {{ Form::close() }}  

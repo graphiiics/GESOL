@@ -31,6 +31,7 @@
         </thead>
         <tbody>
         @foreach($becas as $beca)
+        {{$beca->estudiante->id}}
             <tr>
                 <td>{{ $beca->estudiante->nombres}} {{$beca->estudiante->apellidos}}</td>
                 
@@ -50,6 +51,9 @@
                 </td>
                 <td>
                     <a class="btn btn-small btn-success" href="{{ URL::to('descargarAceptacion/' . $beca->estudiante->id) }}">Descargar</a>
+                </td>
+                <td>
+                    <a class="btn btn-small btn-danger" href="{{ URL::to('eliminarExpediente/' . $beca->id )}}">Eliminar</a>
                 </td>
             </tr>
         @endforeach

@@ -12,7 +12,7 @@
 	    </a>
 	  </div>
 	  <div class="btn-group" role="group">
-	    <a href="{{ URL::to('proyectos/ver') }}">
+	    <a href="{{ URL::to('verProyectos') }}">
 		    <button type="button" class="btn btn-default">Proyectos</button>
 	    </a>
 	  </div>
@@ -23,13 +23,22 @@
 	  </div>
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('login') }}">
-		    <button type="button" class="btn btn-default">Login</button>
+		    <button type="button" class="btn btn-default">Mi cuenta</button>
 	    </a>                                                                                                                                                       
 	  </div>
 	</div>
 @stop
 
 @section('contenido')
+
+
+@if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>        
+            @endforeach
+        </div>
+@endif
 
 {{ Form::open(array('url' => 'estudiantes')) }}
 	<div class="col-md-12 col-md-offset-0">

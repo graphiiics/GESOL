@@ -103,6 +103,45 @@ Route::filter('sessionAdministrador', function(){
 	}
 });
 
+//Filtro para evitar que entre al panel de tareas sin que se haya asignado un proyecto antes! 
+Route::filter('sesionAbierta', function(){
+	if (Session::get('tipo')){
+    	// usuario con sesión iniciada
+		if(Session::get('tipo') == 'Estudiante')
+		{
+			return Redirect::to('perfilEstudiante');
+		}else{
+			return Redirect::to('nuevoProyecto');
+		}
+	}
+});
+
+
+Route::filter('panelTareas', function(){
+	$id = Session::get('id');
+	$estudiante = Estudiante::find($id);
+
+	if($estudiante->estatusProyecto == 0)
+	{
+		Session::flash('message', 'Aun no eliges un proyecto o está pendiente la aprobación del proyecto seleccionado.');
+		return Redirect::to('elegirProyecto');
+	}
+});
+
+Route::filter('becasNulo', function(){
+	$becas = Beca::all();
+	if(empty($becas))
+	{
+		Session::flash('message', 'Aun no se encuentra ninguna beca registrada');
+		return Redirect::to('administrarEstudiantes');
+	}
+	
+});
+
+
+
+
+
 
 
 

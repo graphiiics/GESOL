@@ -23,7 +23,7 @@
             <tr>
                 <td>Nombre</td>
                 <td>Proyecto</td>
-                <td>Acciones</td>
+                <td class="col-sm-4">Acciones</td>
             </tr>
         </thead>
         <tbody>

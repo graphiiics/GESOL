@@ -12,6 +12,10 @@
       
 @stop
 @section('contenido')
+
+@if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
+@endif
 <div class="col-md-12 col-md-offset-0">
     <h4>Datos del Estudiante</h4>
     <div class="panel panel-default">

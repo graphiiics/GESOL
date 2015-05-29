@@ -14,6 +14,13 @@
 @stop
 
 @section('contenido')
+    @if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>        
+            @endforeach
+        </div>
+    @endif
 	{{ Form::open(array('url' => 'proyectos')) }}
 		<div class="col-md-12 col-md-offset-0">
             <h4>Crear Nuevo Proyecto</h4>
@@ -79,8 +86,6 @@
                             <textarea class="form-control" id="descripcion" name="descripcion"  rows="6"></textarea>
                         </div>
                     </div>
-     
-                    
 
                    <div class="form-group">
 	                    <label for="amount" class="col-sm-4 control-label">Perfiles Requeridos:</label>
