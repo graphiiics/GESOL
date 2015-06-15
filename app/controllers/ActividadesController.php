@@ -83,4 +83,17 @@ class ActividadesController extends \BaseController {
 		//
 	}
 
+	public function eliminarActividad($id)
+	{
+
+		
+		$actividad = Actividad::find($id);
+		$idProyecto = $actividad->proyecto_id;
+		$actividad->delete();
+		Session::flash('message', 'La actividad "'.$actividad->nombre.'" se ha eliminado!');
+
+		return Redirect::to('proyectos/'.$idProyecto);
+
+	}	
+
 }

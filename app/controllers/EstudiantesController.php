@@ -148,6 +148,7 @@ class EstudiantesController extends \BaseController {
 	{
 		//
 		$estudiante = Estudiante::find($id);
+		$perfiles = Perfil::all();
 
         // show the view and pass the nerd to it
         return View::make('estudiantes.verEstudiante')->with('estudiante', $estudiante);
@@ -188,7 +189,7 @@ class EstudiantesController extends \BaseController {
 	        'telefono'              => 'numeric|min:10',
 	        'celular'             	=> 'numeric|min:10',
 	        'email'             	=> 'required|email',
-	        'contrasena'            => 'required|min:8|alpha_num',
+	    
 	        'sexo'             		=> 'required',
 	        'codigoPostal'          => 'required',
 	        'estado'             	=> 'required',

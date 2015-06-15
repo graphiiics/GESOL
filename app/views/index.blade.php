@@ -16,22 +16,22 @@
 	<div class="btn-group btn-group-justified" role="group" aria-label="...">
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('inicio') }}">
-		    <button type="button" class="btn btn-default">Inicio</button>
+		    <button type="button" class="btn btn-primary">Inicio</button>
 	    </a>
 	  </div>
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('verProyectos') }}">
-		    <button type="button" class="btn btn-default">Proyectos</button>
+		    <button type="button" class="btn btn-primary">Proyectos</button>
 	    </a>
 	  </div>
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('nuevoEstudiante') }}">
-		    <button type="button" class="btn btn-default">Registro</button>
+		    <button type="button" class="btn btn-primary">Registro</button>
 	    </a>
 	  </div>
 	  <div class="btn-group" role="group">
 	    <a href="{{ URL::to('login') }}">
-		    <button type="button" class="btn btn-default">Mi cuenta</button>
+		    <button type="button" class="btn btn-danger">Mi cuenta</button>
 	    </a>
 	  </div>
 	</div>
@@ -44,10 +44,11 @@
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+       
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/talleres.jpg" alt="First slide">
+          <img src="img/labsol_1.jpg" alt="First slide">
           <div class="container">
             <!--div class="carousel-caption">
               <h1>Example headline.</h1>
@@ -57,7 +58,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="img/labsol.png" alt="Second slide">
+          <img src="img/labsol_2.jpg" alt="Second slide">
           <div class="container">
             <!--div class="carousel-caption">
               <h1>Another example headline.</h1>
@@ -67,7 +68,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="img/labsol2.jpg" alt="Third slide">
+          <img src="img/labsol_3.jpg" alt="Third slide">
           <div class="container">
             <!--div class="carousel-caption">
               <h1>One more for good measure.</h1>
@@ -77,6 +78,9 @@
           </div>
         </div>
       </div>
+     
+        </div>
+        
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>

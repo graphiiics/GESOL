@@ -23,22 +23,22 @@
 					<div class="btn-group btn-group-justified" role="group" aria-label="...">
 				      <div class="btn-group" role="group">
 				        <a href="{{ URL::to('inicio') }}">
-				            <button type="button" class="btn btn-default">Inicio</button>
+				            <button type="button" class="btn btn-primary">Inicio</button>
 				        </a>
 				      </div>
 				      <div class="btn-group" role="group">
 				        <a href="{{ URL::to('verProyectos') }}">
-				            <button type="button" class="btn btn-default">Proyectos</button>
+				            <button type="button" class="btn btn-primary">Proyectos</button>
 				        </a>
 				      </div>
 				      <div class="btn-group" role="group">
 				        <a href="{{ URL::to('perfilEstudiante/' . Session::get('id') )}}">
-				            <button type="button" class="btn btn-default">Mi cuenta</button>
+				            <button type="button" class="btn btn-primary">Mi cuenta</button>
 				        </a>
 				      </div>
 				      <div class="btn-group" role="group">
 				        <a href="{{ URL::to('cerrar') }}">
-				            <button type="button" class="btn btn-default">Cerrar Sesión</button>
+				            <button type="button" class="btn btn-danger">Cerrar Sesión</button>
 				        </a>
 				      </div>
 				    </div>
@@ -49,7 +49,7 @@
 				<div id="menu">
 					@yield('menu')
 					<div class="panel-group" id="accordion">
-	        <div class="panel panel-default">
+	        <div class="panel panel-primary">
 	            <div class="panel-heading">
 	                <h4 class="panel-title">
 	                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-user">
@@ -74,7 +74,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="panel panel-default">
+	        <div class="panel panel-primary">
 	            <div class="panel-heading">
 	                <h4 class="panel-title">
 	                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-user">
@@ -108,7 +108,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="panel panel-default">
+	        <div class="panel panel-primary">
 	            <div class="panel-heading">
 	                <h4 class="panel-title">
 	                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">

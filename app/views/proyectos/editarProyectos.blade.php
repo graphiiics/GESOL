@@ -43,6 +43,8 @@
                         {{ Form::submit('Eliminar', array('class' => 'btn btn-warning')) }}
                     {{ Form::close() }}
 
+                    <a class="btn btn-small btn-success" href="{{ URL::to('proyectos/' . $proyecto->id) }}">Editar</a>
+
                     <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
                     <!--a class="btn btn-small btn-info"  class="pull-right" href="{{ URL::to('proyecto/' . $proyecto->id . '/edit') }}">Actualizar</a-->
 

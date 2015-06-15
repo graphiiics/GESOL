@@ -131,6 +131,14 @@ class ProyectosController extends \BaseController {
 	public function show($id)
 	{
 		//
+		$proyecto = Proyecto::find($id);
+		$perfiles = Perfil::all();
+		//$perfilesProyecto = Perfil::
+		$actividades = Actividad::where('proyecto_id', '=', $proyecto->id )->get();
+        // show the view and pass the nerd to it
+        return View::make('proyectos.actualizarProyecto', array('proyecto'=>$proyecto, 'perfiles'=>$perfiles, 'actividades'=>$actividades));
+
+        //return View::make('proyectos.actualizarProyecto')->with('proyecto', $proyecto);
 	}
 
 	/**
@@ -155,6 +163,42 @@ class ProyectosController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$proyecto = Proyecto::find($id);
+		$proyecto->nombre = Input::get('nombre');
+		$proyecto->dependencia = Input::get('dependencia');
+		$proyecto->tipoProyecto = Input::get('tipoProyecto');
+		$proyecto->duracion = Input::get('duracion');
+		$proyecto->numeroIntegrantes = Input::get('numeroIntegrantes');
+		$proyecto->objetivo = Input::get('objetivo');
+		$proyecto->descripcion = Input::get('descripcion');
+		//$proyecto->porcentaje = 0;
+
+		$proyecto->save();
+
+		$perfiles = Input::get('perfiles');
+
+		    if(is_array($perfiles)) 
+		    {
+		        for($i=0 ;$i < count($perfiles); $i++)
+		        {
+		            // insert data on first table (accounts table)
+		            $perfilNew[$i] = new PerfilProyecto;
+		            $perfilNew[$i]->perfil_id = $perfiles[$i];
+		            $perfilNew[$i]->proyecto_id = $proyecto->id;
+		            $perfilNew[$i]->save();
+		            
+		        }
+		    }
+
+		$numActividades = Input::get('numeroActividades');
+
+			for ($i = 1; $i <= $numActividades; $i++) {
+	    		$actividad[$i] = new Actividad;
+	    		$actividad[$i]->nombre = Input::get('campo'.$i);
+	    		$actividad[$i]->proyecto_id = $proyecto->id;
+	    		$actividad[$i]->save();
+			}
+			return Redirect::to('verProyectos');
 	}
 
 	/**

@@ -139,6 +139,7 @@ Route::group(array('before'=>'sessionEstudiante'), function(){
 
 		return View::make('tareas/finalizarTareas', array('tareas' => $tareas, 'tareasPendientes' => $tareasPendientes, 'tareasTerminadas' => $tareasTerminadas, 'porcentaje' => $porcentaje));
 	});*/
+	
 
 	Route::get('validarTarea/{id}', 'TareasController@validarTarea');
 	Route::get('eliminarTarea/{id}', 'TareasController@eliminarTarea');
@@ -214,6 +215,8 @@ Route::group(array('before'=>'sessionAdministrador'), function(){
 	Route::get('aprobarProyectoEstudiante/{id}', 'EstudiantesController@aprobarProyecto');
 
 	Route::get('rechazarProyectoEstudiante/{id}', 'EstudiantesController@rechazarProyecto');
+
+	Route::get('eliminarActividad/{id}', 'ActividadesController@eliminarActividad');
 
 	Route::get('validarTareas', function()
 	{
